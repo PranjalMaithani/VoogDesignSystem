@@ -8,6 +8,7 @@ export default {
   output: {
     file: "./build/bundle.min.js",
     format: "umd",
+    sourcemap: true,
     name: "bundle",
   },
   plugins: [
