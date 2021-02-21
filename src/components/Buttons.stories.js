@@ -7,6 +7,12 @@ export default {
   component: VoogButton,
   argTypes: {
     onClick: { action: "button-click" },
+    size: { control: { type: "radio", options: ["small", "medium"] } },
+    variant: {
+      control: { type: "radio", options: ["primary", "alternate", "dark"] },
+    },
+    disabled: { control: { type: "boolean" } },
+    label: { control: { type: "text" } },
   },
 };
 
