@@ -1,0 +1,16 @@
+Watching /Users/pranjal/code/voog-design-system and all sub-directories not excluded by your .gitignore. Will not monitor dotfiles.
+Found & ignored ./node_modules ; is listed in .gitignore
+
+Starting: build-storybook -- --output-dir /var/folders/n3/p04k5vhs0f32lrcnmmkhfc5h0000gp/T/chromatic--2303-IIsC8uaNykXL
+node:internal/modules/cjs/loader:928
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/pranjal/code/voog-design-system/build-storybook'
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:925:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:769:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+    at node:internal/main/run_main_module:17:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
