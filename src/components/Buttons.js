@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { primary, grey, secondary } from "../design/colors";
-import { typeScale } from "../design/typography";
-import { Type } from "./type";
+import typeScale from "../design/typeScale";
+import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
 
 const sizes = ["small", "medium"];
@@ -14,9 +14,7 @@ const BUTTON_MODIFIERS = {
   min-width: 96px;
   height: 40px;
 
-  font-family: ${typeScale.p14.fontFamily}, sans-serif;
-  font-size: ${typeScale.p14.fontSize}px;
-  line-height: ${typeScale.p14.lineHeight};
+  ${SetTypography(typeScale.p14)}
   `,
 
   medium: () => `
@@ -68,9 +66,7 @@ const Button = styled.button`
   border: none;
   border-radius: 8px;
 
-  font-family: ${typeScale.p16Bold.fontFamily}, sans-serif;
-  font-size: ${typeScale.p16Bold.fontSize}px;
-  line-height: ${typeScale.p16Bold.lineHeight};
+  ${SetTypography(typeScale.p16Bold)}
 
   &:disabled {
     opacity: 0.5;
@@ -94,10 +90,6 @@ const ActionButton = styled(Button)`
     background-color: ${primary.voogBlue};
   }
 
-  ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`;
-
-const AlternativeButton = styled(Button)`
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { primaryFont } from "./typography";
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -13,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
 @font-face {
     font-family: "MetropolisBold";
     src: url("/assets/fonts/Metropolis-Bold.otf");
+}
+@font-face {
+    font-family: "SourceCodePro";
+    src: url("/assets/fonts/SourceCodePro-Regular.ttf");
 }
 
 html {

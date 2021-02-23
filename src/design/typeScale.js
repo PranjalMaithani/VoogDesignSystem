@@ -1,4 +1,4 @@
-export const typeScale = {
+const typeScale = {
   //HEADINGS
 
   h1: {
@@ -108,3 +108,5 @@ export const typeScale = {
     fontFamily: "SourceCodePro",
   },
 };
+
+export default typeScale;
