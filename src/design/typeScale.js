@@ -91,13 +91,13 @@ const typeScale = {
   l12: {
     fontSize: 12,
     lineHeight: 16,
-    fontFamily: "MetropolisMedium",
+    fontFamily: "MetropolisRegular",
   },
 
   l12Bold: {
     fontSize: 12,
     lineHeight: 16,
-    fontFamily: "MetropolisBold",
+    fontFamily: "MetropolisMedium",
   },
 
   //CODE

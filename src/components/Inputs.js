@@ -10,9 +10,31 @@ import { useState } from "react";
 const INPUT_PADDING_TOP = 24;
 const INPUT_PADDING_LEFT = 16;
 
+const INPUT_MODIFIERS = {
+  error: () => `
+  border-color: ${secondary.red};
+  ~ label, 
+  &:focus ~ label, 
+  &:active ~ label {
+    color: ${secondary.red};
+  }
+
+  &:hover, &:focus, &:active {
+    border-color: ${secondary.red};
+  }
+  `,
+
+  disabled: () => `
+  opacity: 0.5;
+  cursor: not-allowed;
+  `,
+};
+
 const InputDiv = styled.div`
   display: inline-block;
   position: relative;
+
+  ${applyStyleModifiers(INPUT_MODIFIERS)}
 `;
 
 const InputLabel = styled.label`
@@ -69,10 +91,26 @@ const Input = styled.input`
   &:focus ~ label {
     color: ${primary.voogBlue};
   }
+
+  &:disabled ~ label {
+    pointer-events: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  ${applyStyleModifiers(INPUT_MODIFIERS)}
 `;
 
-export const VoogInput = ({ label, ...props }) => {
-  const [isLabelAbove, setIsLabelAbove] = useState(false);
+const AdditionalText = styled.p`
+  color: ${grey.g1};
+  ${SetTypography(typeScale.l12)}
+  margin: 8px;
+`;
+
+export const VoogInput = ({ info, error, label, ...props }) => {
+  const [isLabelAbove, setIsLabelAbove] = useState(props.value || props.defaultValue);
   const labelValue = label || "Label";
 
   const checkInput = (event, isFocused) => {
@@ -87,8 +125,11 @@ export const VoogInput = ({ label, ...props }) => {
     }
   };
 
+  const hasError = error !== "" && error !== null;
+  const isDisabled = props.disabled && true;
+
   return (
-    <InputDiv>
+    <InputDiv modifiers={[isDisabled && "disabled"]}>
       <Input
         id={labelValue}
         name="input"
@@ -98,12 +139,32 @@ export const VoogInput = ({ label, ...props }) => {
         onBlur={(e) => {
           checkInput(e, false);
         }}
+        modifiers={[hasError && "error"]}
         {...props}
       />
 
       <InputLabel htmlFor={labelValue} isAbove={isLabelAbove}>
         {labelValue}
       </InputLabel>
+
+      {info && <AdditionalText>{info}</AdditionalText>}
+      {hasError && (
+        <AdditionalText style={{ color: secondary.red }}>
+          {error}
+        </AdditionalText>
+      )}
     </InputDiv>
   );
+};
+
+VoogInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  info: PropTypes.string,
+  error: PropTypes.string,
+};
+
+VoogInput.defaultProps = {
+  label: "Label",
+  info: "",
+  error: "",
 };

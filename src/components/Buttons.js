@@ -116,8 +116,8 @@ export const VoogButton = ({
     <ActionButton
       modifiers={[size, variant]}
       onClick={onClick}
-      {...props}
       disabled={isDisabled}
+      {...props}
     >
       {label || props.children}
     </ActionButton>
