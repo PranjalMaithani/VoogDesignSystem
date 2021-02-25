@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { primary, grey, secondary } from "../design/colors";
+import cornerRadius from "../design/cornerRadius";
+import spacing from "../design/spacing";
 import typeScale from "../design/typeScale";
+import curves from "../design/animation";
 import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
 
@@ -9,8 +12,8 @@ import Spinner from "./spinner";
 
 import { useState } from "react";
 
-const INPUT_PADDING_TOP = 24;
-const INPUT_PADDING_LEFT = 16;
+const INPUT_PADDING_TOP = spacing.smallExtra;
+const INPUT_PADDING_LEFT = spacing.small;
 
 const INPUT_MODIFIERS = {
   error: () => `
@@ -45,14 +48,15 @@ const InputLabel = styled.label`
   overflow: visible;
   margin: 0;
   cursor: text;
-  transition: 0.2s;
+  transition: 0.2s all, 0.1s color;
+  animation-timing-function: ${curves.inSlow};
   ${(props) => {
     if (props.isAbove) {
       return `
       background-color: ${primary.white};
-        top: -8px;
+        top: -${spacing.extraSmall}px;
         bottom: 0;
-        left: 8px;
+        left: ${spacing.extraSmall}px;
         ${SetTypography(typeScale.l12Bold)}
         height: 16px;
         padding: 0 4px;
@@ -76,8 +80,11 @@ const Input = styled.input`
   color: ${primary.primaryGrey};
   background-color: ${primary.white};
   border: 1px solid ${grey.g3};
-  border-radius: 4px;
+  border-radius: ${cornerRadius.small}px;
   ${SetTypography(typeScale.p14)}
+
+  transition: 0.1s;
+  animation-timing-function: ${curves.inSlow};
 
   &:hover {
     border-color: ${grey.g2};
@@ -108,7 +115,7 @@ const Input = styled.input`
 const AdditionalText = styled.p`
   color: ${grey.g1};
   ${SetTypography(typeScale.l12)}
-  margin: 8px;
+  margin: ${spacing.extraSmall}px;
 `;
 
 const Icon = styled.div`
@@ -117,8 +124,8 @@ const Icon = styled.div`
   padding-left: 6px;
   background-color: ${primary.white};
   position: absolute;
-  right: 12px;
-  top: 16px;
+  right: ${spacing.small}px;
+  top: ${spacing.small}px;
 `;
 
 export const VoogInput = ({ state, info, error, label, ...props }) => {

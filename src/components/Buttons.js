@@ -4,12 +4,11 @@ import { primary, grey, secondary } from "../design/colors";
 import cornerRadius from "../design/cornerRadius";
 import spacing from "../design/spacing";
 import typeScale from "../design/typeScale";
+import curves from "../design/animation";
 import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
 
 import Spinner from "./spinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import SVGIcon from "./SVGs/SVGIcon";
 import { TickSVG } from "./SVGs/svgs";
@@ -85,6 +84,8 @@ const Button = styled.button`
 const ButtonWrapper = styled(Button)`
   background-color: ${primary.voogBlue};
   color: ${primary.white};
+  animation-timing-function: ${curves.outFast};
+  transition-duration: 0.1s;
 
   &:hover {
     background-color: ${primary.voogBlueHover};
