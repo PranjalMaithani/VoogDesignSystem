@@ -2,6 +2,7 @@ export const primary = {
   voogBlue: "#443DF6",
   voogBlueHover: "#605AF7",
   voogBluePressed: "#3A34D1",
+  voogBlueAlpha: "rgba(68, 61, 246, 0.2)",
 
   voogBlueAlt: "#ECECFE",
   voogBlueAltHover: "#DAD8FD",
@@ -13,6 +14,7 @@ export const primary = {
   primaryGrey: "#1B2124",
   black: "#000000",
   white: "#FFFFFF",
+  whiteAlpha: "rgba(255, 255, 255, 0.2)",
 };
 
 export const grey = {

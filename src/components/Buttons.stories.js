@@ -14,6 +14,13 @@ export default {
         default: "small",
       },
     },
+    state: {
+      control: {
+        type: "radio",
+        options: [null, "saving", "saved"],
+        default: null,
+      },
+    },
     variant: {
       control: { type: "radio", options: ["primary", "alternate", "dark"] },
     },
@@ -25,6 +32,18 @@ export default {
 const Template = (args) => <VoogButton {...args} />;
 
 export const ActionButton = Template.bind({});
+
+export const SavingButton = Template.bind({});
+SavingButton.args = {
+  label: "Saving",
+  state: "saving",
+};
+
+export const SavedButton = Template.bind({});
+SavedButton.args = {
+  label: "Saved",
+  state: "saved",
+};
 
 export const AlternateButton = Template.bind({});
 AlternateButton.args = {

@@ -5,6 +5,8 @@ import typeScale from "../design/typeScale";
 import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
 
+import Spinner from "./spinner";
+
 import { useState } from "react";
 
 const INPUT_PADDING_TOP = 24;
@@ -109,8 +111,20 @@ const AdditionalText = styled.p`
   margin: 8px;
 `;
 
-export const VoogInput = ({ info, error, label, ...props }) => {
-  const [isLabelAbove, setIsLabelAbove] = useState(props.value || props.defaultValue);
+const Icon = styled.div`
+  width: 24px;
+  height: 24px;
+  padding-left: 6px;
+  background-color: ${primary.white};
+  position: absolute;
+  right: 12px;
+  top: 16px;
+`;
+
+export const VoogInput = ({ state, info, error, label, ...props }) => {
+  const [isLabelAbove, setIsLabelAbove] = useState(
+    props.value || props.defaultValue
+  );
   const labelValue = label || "Label";
 
   const checkInput = (event, isFocused) => {
@@ -143,6 +157,7 @@ export const VoogInput = ({ info, error, label, ...props }) => {
         {...props}
       />
 
+      {state && <Icon>{state === "loading" && <Spinner color="blue" />}</Icon>}
       <InputLabel htmlFor={labelValue} isAbove={isLabelAbove}>
         {labelValue}
       </InputLabel>
@@ -161,10 +176,12 @@ VoogInput.propTypes = {
   label: PropTypes.string.isRequired,
   info: PropTypes.string,
   error: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 VoogInput.defaultProps = {
   label: "Label",
   info: "",
   error: "",
+  icon: null,
 };

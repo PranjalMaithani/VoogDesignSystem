@@ -5,6 +5,13 @@ import typeScale from "../design/typeScale";
 import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
 
+import Spinner from "./spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+
+import SVGIcon from "./SVGs/SVGIcon";
+import { TickSVG } from "./SVGs/svgs";
+
 const sizes = ["small", "medium"];
 const variants = ["primary", "alternate", "dark"];
 
@@ -65,6 +72,8 @@ const Button = styled.button`
 
   border: none;
   border-radius: 8px;
+  padding-left: 16px;
+  padding-right: 14px;
 
   ${SetTypography(typeScale.p16Bold)}
 
@@ -74,7 +83,7 @@ const Button = styled.button`
   }
 `;
 
-const ActionButton = styled(Button)`
+const ButtonWrapper = styled(Button)`
   background-color: ${primary.voogBlue};
   color: ${primary.white};
 
@@ -93,7 +102,13 @@ const ActionButton = styled(Button)`
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 
+const Icon = styled.div`
+  max-width: 24px;
+  margin-right: 14px;
+`;
+
 export const VoogButton = ({
+  state,
   variant,
   modifiers,
   onClick,
@@ -113,14 +128,24 @@ export const VoogButton = ({
   }
 
   return (
-    <ActionButton
+    <ButtonWrapper
       modifiers={[size, variant]}
       onClick={onClick}
       disabled={isDisabled}
       {...props}
     >
+      {state !== null && (
+        <Icon>
+          {state === "saving" && (
+            <Spinner color={variant === "alternate" ? "blue" : "white"} />
+          )}
+
+          {state === "saved" && <SVGIcon svg={TickSVG} />}
+        </Icon>
+      )}
+
       {label || props.children}
-    </ActionButton>
+    </ButtonWrapper>
   );
 };
 
@@ -128,6 +153,7 @@ VoogButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(["small", "medium"]),
+  state: PropTypes.oneOf([null, "saving", "saved"]),
   variant: PropTypes.oneOf(["primary", "alternate", "dark"]),
   isDisabled: PropTypes.bool,
 };
@@ -138,4 +164,5 @@ VoogButton.defaultProps = {
   size: "medium",
   variant: "primary",
   isDisabled: false,
+  state: null,
 };
