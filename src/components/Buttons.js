@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { primary, grey, secondary } from "../design/colors";
+import cornerRadius from "../design/cornerRadius";
+import spacing from "../design/spacing";
 import typeScale from "../design/typeScale";
 import SetTypography from "./SetTypography";
 import PropTypes from "prop-types";
@@ -67,13 +69,9 @@ const Button = styled.button`
 
   cursor: pointer;
 
-  min-width: 120px;
-  height: 56px;
-
   border: none;
-  border-radius: 8px;
-  padding-left: 16px;
-  padding-right: 14px;
+  border-radius: ${cornerRadius.medium}px;
+  padding: 0 ${spacing.small}px;
 
   ${SetTypography(typeScale.p16Bold)}
 
@@ -103,8 +101,9 @@ const ButtonWrapper = styled(Button)`
 `;
 
 const Icon = styled.div`
+  width: 24px;
   max-width: 24px;
-  margin-right: 14px;
+  margin-right: ${spacing.extraSmall}px;
 `;
 
 export const VoogButton = ({

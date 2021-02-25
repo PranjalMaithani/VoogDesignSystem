@@ -30,7 +30,7 @@ const Spinner = styled.div`
 
   ${spinnerDimensions}
 
-  font-size: 0.12rem;
+  font-size: 0.14rem;
   position: relative;
   text-indent: -9999em;
   ${(props) => (props.color === "blue" ? blueSpinner : whiteSpinner)}
