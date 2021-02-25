@@ -23,7 +23,7 @@ const BUTTON_MODIFIERS = {
   min-width: 96px;
   height: 40px;
 
-  ${SetTypography(typeScale.p14)}
+  ${SetTypography(typeScale.p14Bold)}
   `,
 
   medium: () => `
@@ -67,6 +67,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
+  height: 56px;
   cursor: pointer;
 
   border: none;
@@ -102,7 +103,6 @@ const ButtonWrapper = styled(Button)`
 
 const Icon = styled.div`
   width: 24px;
-  max-width: 24px;
   margin-right: ${spacing.extraSmall}px;
 `;
 
@@ -139,7 +139,7 @@ export const VoogButton = ({
             <Spinner color={variant === "alternate" ? "blue" : "white"} />
           )}
 
-          {state === "saved" && <SVGIcon svg={TickSVG} />}
+          {state === "saved" && <SVGIcon svg={TickSVG} width={24} />}
         </Icon>
       )}
 

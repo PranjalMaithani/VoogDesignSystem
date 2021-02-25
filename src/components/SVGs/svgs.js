@@ -11,9 +11,9 @@ export const TickSVG = ({ ...props }) => {
       <path
         d="M1 6.5L6 11.5L16.5 1"
         stroke="currentColor"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
