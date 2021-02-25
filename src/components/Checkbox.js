@@ -88,13 +88,9 @@ export const VoogCheckbox = ({ label, ...props }) => {
 };
 
 VoogCheckbox.propTypes = {
-  label: PropTypes.string.isRequired,
-  checked: PropTypes.boolean,
-  disabled: PropTypes.boolean,
+  label: PropTypes.string,
 };
 
 VoogCheckbox.defaultProps = {
   label: "Something here",
-  checked: false,
-  disabled: false,
 };
