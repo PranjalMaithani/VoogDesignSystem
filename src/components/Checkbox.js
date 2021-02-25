@@ -8,6 +8,7 @@ import SetTypography from "./SetTypography";
 import typeScale from "../design/typeScale";
 import spacing from "../design/spacing";
 import curves from "../design/animation";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.label`
   display: inline-flex;
@@ -90,7 +91,6 @@ VoogCheckbox.propTypes = {
   label: PropTypes.string.isRequired,
   checked: PropTypes.boolean,
   disabled: PropTypes.boolean,
-  state: PropTypes.string,
 };
 
 VoogCheckbox.defaultProps = {

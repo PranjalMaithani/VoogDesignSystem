@@ -1,10 +1,10 @@
 import React from "react";
 import { VoogCheckbox } from "./Checkbox.js";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Components/Checkbox",
   component: VoogCheckbox,
-
   argTypes: {
     onClick: { action: "checkbox-toggle" },
     label: { control: { type: "text" } },
@@ -22,7 +22,7 @@ Checkbox.args = {
 
 export const CheckedCheckbox = Template.bind({});
 CheckedCheckbox.args = {
-  label: "Something checked",
+  label: "Something checked here",
   checked: true,
 };
 
