@@ -49,7 +49,7 @@ const InputLabel = styled.label`
   margin: 0;
   cursor: text;
   transition: 0.2s all, 0.1s color;
-  animation-timing-function: ${curves.inSlow};
+  animation-timing-function: ${curves.outFast};
   ${(props) => {
     if (props.isAbove) {
       return `
@@ -84,7 +84,7 @@ const Input = styled.input`
   ${SetTypography(typeScale.p14)}
 
   transition: 0.1s;
-  animation-timing-function: ${curves.inSlow};
+  animation-timing-function: ${curves.outFast};
 
   &:hover {
     border-color: ${grey.g2};
@@ -183,12 +183,12 @@ VoogInput.propTypes = {
   label: PropTypes.string.isRequired,
   info: PropTypes.string,
   error: PropTypes.string,
-  icon: PropTypes.string,
+  state: PropTypes.string,
 };
 
 VoogInput.defaultProps = {
   label: "Label",
   info: "",
   error: "",
-  icon: null,
+  state: null,
 };
