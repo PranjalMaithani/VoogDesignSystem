@@ -1,5 +1,5 @@
 import SVGIcon from "./SVGs/SVGIcon";
-import { CheckTickSVG } from "./SVGs/svgs";
+import { CheckboxTickSVG } from "./SVGs/svgs";
 import styled from "styled-components";
 
 import { primary, grey } from "../design/colors";
@@ -9,6 +9,7 @@ import typeScale from "../design/typeScale";
 import spacing from "../design/spacing";
 import curves from "../design/animation";
 import PropTypes from "prop-types";
+import hiddenStyle from "./HiddenStyle";
 
 const Wrapper = styled.label`
   display: inline-flex;
@@ -20,7 +21,7 @@ const Wrapper = styled.label`
   ${(props) =>
     !props.disabled &&
     `&:hover > div {
-    border-color: ${primary.voogBlue};
+    border-color: ${grey.g1};
   }`}
 `;
 
@@ -45,30 +46,29 @@ const Check = styled.span`
   position: absolute;
   left: 7px;
   margin: 0;
+  transform: scale(0);
+  transition: transform 0.3s ${curves.inFast};
+
+  //to prevent blurry animation in firefox
+  transform: translateZ(0);
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clippath: inset(50%);
-  margin: 0px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
+  ${hiddenStyle}
 
   ~ span {
-    display: none;
+    transform: scale(0);
   }
 
   &:checked ~ span {
-    display: block;
+    transform: scale(1);
   }
 
-  &:checked ~ div,
   &:focus ~ div {
+    border-color: ${grey.g1};
+  }
+
+  &:checked ~ div {
     border-color: ${primary.voogBlue};
   }
 `;
@@ -79,7 +79,7 @@ export const VoogCheckbox = ({ label, ...props }) => {
       <HiddenCheckbox {...props} />
       <StyledCheckbox />
       <Check>
-        <SVGIcon color={primary.voogBlue} svg={CheckTickSVG} />
+        <SVGIcon color={primary.voogBlue} svg={CheckboxTickSVG} />
       </Check>
 
       {label && <LabelText>{label}</LabelText>}

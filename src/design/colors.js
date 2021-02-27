@@ -3,6 +3,7 @@ export const primary = {
   voogBlueHover: "#605AF7",
   voogBluePressed: "#3A34D1",
   voogBlueAlpha: "rgba(68, 61, 246, 0.2)",
+  voogBlueLight: "#F6F5FF",
 
   voogBlueAlt: "#ECECFE",
   voogBlueAltHover: "#DAD8FD",
