@@ -214,19 +214,6 @@ export const VoogSelect = ({
   const [value, setValue] = useState(setDefaultValue);
   const wrapperRef = useRef();
 
-  options = [
-    "Apple",
-    "Orange",
-    "Berry",
-    "Banana",
-    "Peach",
-    "Grapes",
-    "Pineapple",
-    "Gauva",
-    "Strawberries",
-    "Custard",
-  ];
-
   const [optionProps, setOptionProps] = useState(
     options.map((option) => {
       return {
@@ -336,7 +323,13 @@ export const VoogSelect = ({
         htmlFor={labelValue}
         tabIndex={0}
         aria-label="listbox"
-        onClick={openMenu}
+        onClick={() => {
+          if (isOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        }}
         onKeyDown={(e) => {
           if (e.keyCode === 13 || e.keyCode === 32) {
             openMenu();

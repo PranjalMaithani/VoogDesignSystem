@@ -45,12 +45,16 @@ const BUTTON_MODIFIERS = {
   &:disabled {
     background-color: ${primary.voogBlueAlt};
   }
+
+  &:focus {
+    border: 2px solid ${primary.voogBorderAlt};
+  }
   `,
 
   dark: () => `
   color: white;
   background-color: ${primary.dark};
-  &:hover {
+  &:hover, &:focus {
     background-color: ${primary.darkHover};
   }
   &:disabled {
@@ -89,6 +93,11 @@ const ButtonWrapper = styled(Button)`
 
   &:hover {
     background-color: ${primary.voogBlueHover};
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid ${primary.voogBorder};
   }
 
   &:active {
@@ -132,6 +141,7 @@ export const VoogButton = ({
       modifiers={[size, variant]}
       onClick={onClick}
       disabled={isDisabled}
+      tabIndex={0}
       {...props}
     >
       {state !== null && (

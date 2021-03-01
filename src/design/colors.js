@@ -4,6 +4,8 @@ export const primary = {
   voogBluePressed: "#3A34D1",
   voogBlueAlpha: "rgba(68, 61, 246, 0.2)",
   voogBlueLight: "#F6F5FF",
+  voogBorder: "rgba(0,0,0,0.5)",
+  voogBorderAlt: "#A39FF9",
 
   voogBlueAlt: "#ECECFE",
   voogBlueAltHover: "#DAD8FD",
