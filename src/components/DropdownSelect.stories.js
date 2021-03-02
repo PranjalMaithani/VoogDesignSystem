@@ -1,6 +1,7 @@
 import React from "react";
 import { VoogSelect } from "./DropdownSelect";
 import { action } from "@storybook/addon-actions";
+import DisplayGrid from "./displayGrid";
 
 export default {
   title: "Components/Select",
@@ -37,3 +38,10 @@ SingleSelect.args = {
   label: "Bakery",
   options: ["Donut", "Brownie", "Roll", "Cake", "Puff", "Sandwich"],
 };
+
+export const AllSelects = () => (
+  <DisplayGrid width={300} columns={2}>
+    <SingleSelect {...SingleSelect.args} />
+    <MultipleSelect {...MultipleSelect.args} />
+  </DisplayGrid>
+);

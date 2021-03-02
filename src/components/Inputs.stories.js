@@ -1,6 +1,7 @@
 import React from "react";
 import { VoogInput } from "./Inputs";
 import { action } from "@storybook/addon-actions";
+import DisplayGrid from "./displayGrid";
 
 export default {
   title: "Components/Input",
@@ -56,3 +57,14 @@ export const DisabledInput = Template.bind({});
 DisabledInput.args = {
   disabled: true,
 };
+
+export const AllInputs = () => (
+  <DisplayGrid width={300} columns={3}>
+    <DefaultInput {...DefaultInput.args} />
+    <InputWithData {...InputWithData.args} />
+    <InputLoading {...InputLoading.args} />
+    <InputWithInfo {...InputWithInfo.args} />
+    <InputWithError {...InputWithError.args} />
+    <DisabledInput {...DisabledInput.args} />
+  </DisplayGrid>
+);

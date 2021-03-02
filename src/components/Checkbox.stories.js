@@ -1,6 +1,7 @@
 import React from "react";
 import { VoogCheckbox } from "./Checkbox.js";
 import { action } from "@storybook/addon-actions";
+import DisplayGrid from "./displayGrid";
 
 export default {
   title: "Components/Checkbox",
@@ -36,3 +37,12 @@ export const CheckboxWithoutText = Template.bind({});
 CheckboxWithoutText.args = {
   label: "",
 };
+
+export const AllCheckboxes = () => (
+  <DisplayGrid width={300} columns={2}>
+    <Checkbox {...Checkbox.args} />
+    <CheckedCheckbox {...CheckedCheckbox.args} />
+    <DisabledCheckbox {...DisabledCheckbox.args} />
+    <CheckboxWithoutText {...CheckboxWithoutText.args} />
+  </DisplayGrid>
+);

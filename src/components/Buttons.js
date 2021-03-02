@@ -140,7 +140,6 @@ export const VoogButton = ({
     <ButtonWrapper
       modifiers={[size, variant]}
       onClick={onClick}
-      disabled={isDisabled}
       tabIndex={0}
       {...props}
     >
@@ -165,7 +164,6 @@ VoogButton.propTypes = {
   size: PropTypes.oneOf(["small", "medium"]),
   state: PropTypes.oneOf([null, "saving", "saved"]),
   variant: PropTypes.oneOf(["primary", "alternate", "dark"]),
-  isDisabled: PropTypes.bool,
 };
 
 VoogButton.defaultProps = {
@@ -173,6 +171,5 @@ VoogButton.defaultProps = {
   onClick: undefined,
   size: "medium",
   variant: "primary",
-  isDisabled: false,
   state: null,
 };

@@ -160,7 +160,7 @@ const OptionComponent = ({ option, index, onOptionSelect, isChecked }) => {
       onKeyDown={(e) => {
         keyboardNavigation(e);
       }}
-      aria-label="option"
+      aria-labelledby="option"
       isChecked={isChecked}
     >
       {option}
@@ -213,6 +213,7 @@ export const VoogSelect = ({
   const [text, setText] = useState(setDefaultText);
   const [value, setValue] = useState(setDefaultValue);
   const wrapperRef = useRef();
+  const optionsRef = useRef();
 
   const [optionProps, setOptionProps] = useState(
     options.map((option) => {
@@ -322,7 +323,8 @@ export const VoogSelect = ({
       <Select
         htmlFor={labelValue}
         tabIndex={0}
-        aria-label="listbox"
+        aria-labelledby="listbox"
+        aria-role="listbox"
         onClick={() => {
           if (isOpen) {
             closeMenu();
@@ -333,19 +335,28 @@ export const VoogSelect = ({
         onKeyDown={(e) => {
           if (e.keyCode === 13 || e.keyCode === 32) {
             openMenu();
+            if (optionsRef.current && optionsRef.current.firstChild) {
+              optionsRef.current.firstChild.focus();
+            }
+          } else if (optionsRef.current) {
+            if (e.keyCode === 38) {
+              openMenu();
+              optionsRef.current.lastChild.focus();
+            } else if (e.keyCode === 40) {
+              openMenu();
+              optionsRef.current.firstChild.focus();
+            }
           }
         }}
         isOpen={isOpen}
       >
         <SelectText value={text} tabIndex={-1} />
-        <Icon>
+        <Icon aria-hidden="true">
           <SVGIcon svg={DropdownArrowSVG} />
         </Icon>
-        <SelectHeader aria-hidden="true" htmlFor={labelValue}>
-          {labelValue}
-        </SelectHeader>
+        <SelectHeader htmlFor={labelValue}>{labelValue}</SelectHeader>
       </Select>
-      <OptionsDiv isOpen={isOpen}>
+      <OptionsDiv isOpen={isOpen} ref={optionsRef}>
         {optionProps.map((optionProp, index) => (
           <OptionComponent
             option={optionProp.name}

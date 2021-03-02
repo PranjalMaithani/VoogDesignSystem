@@ -75,10 +75,10 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 
 export const VoogCheckbox = ({ label, ...props }) => {
   return (
-    <Wrapper disabled={props.disabled}>
+    <Wrapper disabled={props.disabled} htmlFor={props.id}>
       <HiddenCheckbox {...props} />
-      <StyledCheckbox />
-      <Check>
+      <StyledCheckbox aria-hidden="true" />
+      <Check aria-hidden="true">
         <SVGIcon color={primary.voogBlue} svg={CheckboxTickSVG} />
       </Check>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { VoogButton } from "./Buttons";
 import { action } from "@storybook/addon-actions";
+import DisplayGrid from "./displayGrid";
 
 export default {
   title: "Components/Button",
@@ -24,7 +25,7 @@ export default {
     variant: {
       control: { type: "radio", options: ["primary", "alternate", "dark"] },
     },
-    isDisabled: { control: { type: "boolean" } },
+    disabled: { control: { type: "boolean" } },
     label: { control: { type: "text" } },
   },
 };
@@ -65,5 +66,17 @@ DarkButton.parameters = {
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
-  isDisabled: true,
+  disabled: true,
 };
+
+export const AllButtons = () => (
+  <DisplayGrid width={120} columns={4}>
+    <ActionButton />
+    <AlternateButton {...AlternateButton.args} />
+    <SavingButton {...SavingButton.args} />
+    <SavedButton {...SavedButton.args} />
+    <SmallButton {...SmallButton.args} />
+    <DarkButton {...DarkButton.args} />
+    <DisabledButton {...DisabledButton.args} />
+  </DisplayGrid>
+);
